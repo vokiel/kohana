@@ -1,1 +1,6 @@
-Zmodyfikowana wersja Kohany w wersji 3.2. Przestrzenie nazw, zmieniony autoloading, zmiany helperów.
+Kohana Framework 3.2 with:
+
+- namespaces
+- psr-0 and aliases in autloading
+- only half of the files in the system/classes folder
+- no feed, inflector and cli classes
