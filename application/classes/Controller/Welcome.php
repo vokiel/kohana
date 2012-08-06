@@ -7,8 +7,9 @@ class Welcome extends Controller {
 
 	public function action_index()
 	{
-		$view = View::factory('profiler/stats');
-		//$view = View::factory('hello');
+		$core = \Kohana::$config->load('Core');
+		//$view = View::factory('profiler/stats')->bind('config',$core);
+		$view = View::factory('hello')->bind('config',$core);
 		$this->response->body($view);
 	}
 

@@ -1,4 +1,8 @@
 <?php namespace Kohana\HTTP;
+use Request as Request;
+use Request\Client as Client;
+use Response as Response;
+use Arr as Arr;
 /**
  * HTTT Caching adaptor class that provides caching services to the
  * [Request_Client] class, using HTTP cache control logic as defined in
@@ -20,17 +24,17 @@ class Cache {
 	const CACHE_HIT_KEY       = 'x-cache-hits';
 
 	/**
-	 * Factory method for HTTP_Cache that provides a convenient dependency
+	 * Factory method for HTTP\Cache that provides a convenient dependency
 	 * injector for the Cache library.
 	 * 
-	 *      // Create HTTP_Cache with named cache engine
-	 *      $http_cache = HTTP_Cache::factory('memcache', array(
+	 *      // Create HTTP\Cache with named cache engine
+	 *      $http_cache = HTTP\Cache::factory('memcache', array(
 	 *          'allow_private_cache' => FALSE
 	 *          )
 	 *      );
 	 * 
-	 *      // Create HTTP_Cache with supplied cache engine
-	 *      $http_cache = HTTP_Cache::factory(Cache::instance('memcache'),
+	 *      // Create HTTP\Cache with supplied cache engine
+	 *      $http_cache = HTTP\Cache::factory(Cache::instance('memcache'),
 	 *          array(
 	 *              'allow_private_cache' => FALSE
 	 *          )
@@ -39,7 +43,7 @@ class Cache {
 	 * @uses    [Cache]
 	 * @param   mixed    cache engine to use
 	 * @param   array    options to set to this class
-	 * @return  HTTP_Cache
+	 * @return  HTTP\Cache
 	 */
 	public static function factory($cache, array $options = array())
 	{
@@ -50,7 +54,7 @@ class Cache {
 
 		$options['cache'] = $cache;
 
-		return new HTTP_Cache($options);
+		return new HTTP\Cache($options);
 	}
 
 	/**
@@ -59,7 +63,7 @@ class Cache {
 	 * specific information is encoded into the request.
 	 * 
 	 *      // Generate cache key
-	 *      $cache_key = HTTP_Cache::basic_cache_key_generator($request);
+	 *      $cache_key = HTTP\Cache::basic_cache_key_generator($request);
 	 *
 	 * @param   Request   request 
 	 * @return  string
@@ -118,13 +122,13 @@ class Cache {
 
 		if ($this->_cache_key_callback === NULL)
 		{
-			$this->cache_key_callback('HTTP_Cache::basic_cache_key_generator');
+			$this->cache_key_callback('HTTP\Cache::basic_cache_key_generator');
 		}
 	}
 
 	/**
 	 * Executes the supplied [Request] with the supplied [Request_Client].
-	 * Before execution, the HTTP_Cache adapter checks the request type,
+	 * Before execution, the HTTP\Cache adapter checks the request type,
 	 * destructive requests such as `POST`, `PUT` and `DELETE` will bypass
 	 * cache completely and ensure the response is not cached. All other
 	 * Request methods will allow caching, if the rules are met.
@@ -133,23 +137,23 @@ class Cache {
 	 * @param   Request   request to execute with client
 	 * @return  [Response]
 	 */
-	public function execute(Request_Client $client, Request $request)
+	public function execute(Client $client, Request $request)
 	{
 		if ( ! $this->_cache instanceof Cache)
 			return $client->execute_request($request);
 
 		// If this is a destructive request, by-pass cache completely
 		if (in_array($request->method(), array(
-			HTTP_Request::POST, 
-			HTTP_Request::PUT, 
-			HTTP_Request::DELETE)))
+			HTTP\Request::POST, 
+			HTTP\Request::PUT, 
+			HTTP\Request::DELETE)))
 		{
 			// Kill existing caches for this request
 			$this->invalidate_cache($request);
 
 			$response = $client->execute_request($request);
 
-			$cache_control = HTTP_Header::create_cache_control(array(
+			$cache_control = HTTP\Header::create_cache_control(array(
 				'no-cache',
 				'must-revalidate'
 			));
@@ -177,8 +181,8 @@ class Cache {
 		// Cache the response
 		$this->cache_response($cache_key, $request, $response);
 
-		$response->headers(HTTP_Cache::CACHE_STATUS_KEY, 
-			HTTP_Cache::CACHE_STATUS_MISS);
+		$response->headers(HTTP\Cache::CACHE_STATUS_KEY, 
+			HTTP\Cache::CACHE_STATUS_MISS);
 
 		return $response;
 	}
@@ -193,7 +197,7 @@ class Cache {
 	 */
 	public function invalidate_cache(Request $request)
 	{
-		if (($cache = $this->cache()) instanceof Cache)
+		if (($cache = $this->cache()) instanceof \Cache)
 		{
 			$cache->delete($this->create_cache_key($request, $this->_cache_key_callback));
 		}
@@ -209,7 +213,7 @@ class Cache {
 	 * @return  Kohana_Cache
 	 * @return  Kohana_Request_Client
 	 */
-	public function cache(Cache $cache = NULL)
+	public function cache(\Cache $cache = NULL)
 	{
 		if ($cache === NULL)
 			return $this->_cache;
@@ -242,10 +246,10 @@ class Cache {
 	 * class. The cache key generator provides a unique hash based on the
 	 * `Request` object passed to it.
 	 * 
-	 * The default generator is [HTTP_Cache::basic_cache_key_generator()], which
+	 * The default generator is [HTTP\Cache::basic_cache_key_generator()], which
 	 * serializes the entire `HTTP_Request` into a unique sha1 hash. This will
 	 * provide basic caching for static and simple dynamic pages. More complex
-	 * algorithms can be defined and then passed into `HTTP_Cache` using this
+	 * algorithms can be defined and then passed into `HTTP\Cache` using this
 	 * method.
 	 * 
 	 *      // Get the cache key callback
@@ -269,7 +273,7 @@ class Cache {
 			return $this->_cache_key_callback;
 
 		if ( ! is_callable($callback))
-			throw new HTTP_Exception('cache_key_callback must be callable!');
+			throw new \Exception('cache_key_callback must be callable!');
 
 		$this->_cache_key_callback = $callback;
 		return $this;
@@ -280,7 +284,7 @@ class Cache {
 	 * [Kohana_Response] returned by [Request::execute].
 	 * 
 	 * This is the default cache key generating logic, but can be overridden
-	 * by setting [HTTP_Cache::cache_key_callback()].
+	 * by setting [HTTP\Cache::cache_key_callback()].
 	 *
 	 * @param   Request   request to create key for
 	 * @param   callback  optional callback to use instead of built-in method
@@ -291,7 +295,7 @@ class Cache {
 		if (is_callable($callback))
 			return call_user_func($callback, $request);
 		else
-			return HTTP_Cache::basic_cache_key_generator($request);
+			return HTTP\Cache::basic_cache_key_generator($request);
 	}
 
 	/**
@@ -309,7 +313,7 @@ class Cache {
 		if ($cache_control = Arr::get($headers, 'cache-control'))
 		{
 			// Parse the cache control
-			$cache_control = HTTP_Header::parse_cache_control($cache_control);
+			$cache_control = HTTP\Header::parse_cache_control($cache_control);
 
 			// If the no-cache or no-store directive is set, return
 			if (array_intersect($cache_control, array('no-cache', 'no-store')))
@@ -375,20 +379,20 @@ class Cache {
 				return FALSE;
 
 			// Do cache hit arithmetic, using fast arithmetic if available
-			if ($this->_cache instanceof Cache_Arithmetic)
+			if ($this->_cache instanceof Cache\Arithmetic)
 			{
-				$hit_count = $this->_cache->increment(HTTP_Cache::CACHE_HIT_KEY.$key);
+				$hit_count = $this->_cache->increment(HTTP\Cache::CACHE_HIT_KEY.$key);
 			}
 			else
 			{
-				$hit_count = $this->_cache->get(HTTP_Cache::CACHE_HIT_KEY.$key);
-				$this->_cache->set(HTTP_Cache::CACHE_HIT_KEY.$key, ++$hit_count);
+				$hit_count = $this->_cache->get(HTTP\Cache::CACHE_HIT_KEY.$key);
+				$this->_cache->set(HTTP\Cache::CACHE_HIT_KEY.$key, ++$hit_count);
 			}
 
 			// Update the header to have correct HIT status and count
-			$response->headers(HTTP_Cache::CACHE_STATUS_KEY,
-				HTTP_Cache::CACHE_STATUS_HIT)
-				->headers(HTTP_Cache::CACHE_HIT_KEY, $hit_count);
+			$response->headers(HTTP\Cache::CACHE_STATUS_KEY,
+				HTTP\Cache::CACHE_STATUS_HIT)
+				->headers(HTTP\Cache::CACHE_HIT_KEY, $hit_count);
 
 			return $response;
 		}
@@ -397,11 +401,11 @@ class Cache {
 			if (($ttl = $this->cache_lifetime($response)) === FALSE)
 				return FALSE;
 
-			$response->headers(HTTP_Cache::CACHE_STATUS_KEY,
-				HTTP_Cache::CACHE_STATUS_SAVED);
+			$response->headers(HTTP\Cache::CACHE_STATUS_KEY,
+				HTTP\Cache::CACHE_STATUS_SAVED);
 
 			// Set the hit count to zero
-			$this->_cache->set(HTTP_Cache::CACHE_HIT_KEY.$key, 0);
+			$this->_cache->set(HTTP\Cache::CACHE_HIT_KEY.$key, 0);
 
 			return $this->_cache->set($key, $response, $ttl);
 		}
@@ -456,7 +460,7 @@ class Cache {
 		if ($cache_control = $response->headers('cache-control'))
 		{
 			// Parse the cache control header
-			$cache_control = HTTP_Header::parse_cache_control($cache_control);
+			$cache_control = HTTP\Header::parse_cache_control($cache_control);
 
 			if (isset($cache_control['max-age']))
 			{
@@ -500,4 +504,4 @@ class Cache {
 		return $this->_response_time - $this->_request_time;
 	}
 
-} // End Kohana_HTTP_Cache
+} // End Kohana_HTTP\Cache
