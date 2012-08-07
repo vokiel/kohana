@@ -1,4 +1,6 @@
 <?php namespace Kohana;
+
+use Date as Date;
 /**
  * Message logging with observer-based log writing.
  *

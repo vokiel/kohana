@@ -273,7 +273,7 @@ class Cache {
 			return $this->_cache_key_callback;
 
 		if ( ! is_callable($callback))
-			throw new \Exception('cache_key_callback must be callable!');
+			Error::handler('cache_key_callback must be callable!');
 
 		$this->_cache_key_callback = $callback;
 		return $this;

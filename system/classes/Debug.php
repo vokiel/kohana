@@ -1,4 +1,6 @@
 <?php namespace Kohana;
+use UTF8 as UTF8;
+
 /**
  * Contains debugging and dumping tools.
  *

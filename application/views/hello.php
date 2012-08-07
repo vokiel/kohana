@@ -1,10 +1,12 @@
 <?php
+// test i18n
+echo __('english')."\n";
 // wczytanie pliku konfiguracyjnego
-print_r($config);
-echo "<br>";
+echo Request::current()->directory();
+echo Debug::vars($config);
 // wczytanie wartośc z pliku konfiguracyjnego
-print_r($config['sample_value']);
-echo "<br>";
+//echo Debug::vars($config['sample_value']);
 // profiler
-echo View::factory('profiler/stats')."\n";
+//echo View::factory('profiler/stats')."\n";
+echo '<br>'.number_format(memory_get_usage() / 1048576, 2);
 

@@ -78,7 +78,7 @@ class Upload {
 
 		if ( ! is_dir($directory) OR ! is_writable(realpath($directory)))
 		{
-			throw new \Exception('Directory :dir must be writable',
+			Error::handler('Directory :dir must be writable',
 				array(':dir' => Debug::path($directory)));
 		}
 

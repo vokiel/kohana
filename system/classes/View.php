@@ -168,7 +168,7 @@ class View {
 		}
 		else
 		{
-			throw new Kohana_Exception('View variable is not set: :var',
+			Error::handler('View variable is not set: :var',
 				array(':var' => $key));
 		}
 	}
@@ -230,7 +230,7 @@ class View {
 		catch (Exception $e)
 		{
 			// Display the exception message
-			Kohana_Exception::handler($e);
+			//Kohana_Exception::handler($e);
 
 			return '';
 		}
@@ -249,7 +249,7 @@ class View {
 	{
 		if (($path = Kohana::find_file('views', $file)) === FALSE)
 		{
-			throw new View_Exception('The requested view :file could not be found', array(
+			Error::handler('The requested view :file could not be found', array(
 				':file' => $file,
 			));
 		}
@@ -336,7 +336,7 @@ class View {
 
 		if (empty($this->_file))
 		{
-			throw new \View\Exception('You must set the file to use within your view before rendering');
+			Error::handler('You must set the file to use within your view before rendering');
 		}
 
 		// Combine local and global data and capture the output

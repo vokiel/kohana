@@ -1,6 +1,8 @@
 <?php namespace Kohana\Log;
 
 use Log\Writer as Writer;
+use Kohana as Kohana;
+use Error as Error;
 /**
  * File log writer. Writes out messages and stores them in a YYYY/MM directory.
  *
@@ -30,7 +32,7 @@ class File extends Writer {
 	{
 		if ( ! is_dir($directory) OR ! is_writable($directory))
 		{
-			throw new \Exception('Directory :dir must be writable',
+			Error::handler('Directory :dir must be writable',
 				array(':dir' => Debug::path($directory)));
 		}
 

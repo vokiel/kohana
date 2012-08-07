@@ -215,7 +215,7 @@ class Num {
 
 		// Verify the size format and store the matching parts
 		if ( ! preg_match($pattern, $size, $matches))
-			throw new \Exception('The byte unit size, ":size", is improperly formatted.', array(
+			Error::handler('The byte unit size, ":size", is improperly formatted.', array(
 				':size' => $size,
 			));
 

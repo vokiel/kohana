@@ -211,7 +211,7 @@ class Response implements \HTTP\Response {
 		}
 		else
 		{
-			throw new Kohana_Exception(__METHOD__.' unknown status value : :value', array(':value' => $status));
+			Error::handler(__METHOD__.' unknown status value : :value', array(':value' => $status));
 		}
 	}
 
@@ -403,7 +403,7 @@ class Response implements \HTTP\Response {
 		{
 			if (empty($download))
 			{
-				throw new Kohana_Exception('Download name must be provided for streaming files');
+				Error::handler('Download name must be provided for streaming files');
 			}
 
 			// Temporary files will automatically be deleted
@@ -456,7 +456,7 @@ class Response implements \HTTP\Response {
 
 		if ( ! is_resource($file))
 		{
-			throw new Kohana_Exception('Could not read file to send: :file', array(
+			Error::handler('Could not read file to send: :file', array(
 				':file' => $download,
 			));
 		}
@@ -554,18 +554,6 @@ class Response implements \HTTP\Response {
 			}
 			catch (Exception $e)
 			{
-				// Create a text version of the exception
-				$error = Kohana_Exception::text($e);
-
-				if (is_object(Kohana::$log))
-				{
-					// Add this exception to the log
-					Kohana::$log->add(Log::ERROR, $error);
-
-					// Make sure the logs are written
-					Kohana::$log->write();
-				}
-
 				// Do NOT display the exception, it will corrupt the output!
 			}
 		}
@@ -641,7 +629,7 @@ class Response implements \HTTP\Response {
 	{
 	    if ($this->_body === NULL)
 		{
-			throw new Request_Exception('No response yet associated with request - cannot auto generate resource ETag');
+			Error::handler('No response yet associated with request - cannot auto generate resource ETag');
 		}
 
 		// Generate a unique hash for the response
@@ -665,7 +653,7 @@ class Response implements \HTTP\Response {
 		}
 
 		if ( ! $request)
-			throw new Request_Exception('A Request object must be supplied with an etag for evaluation');
+			Error::handler('A Request object must be supplied with an etag for evaluation');
 
 		// Set the ETag header
 		$this->_header['etag'] = $etag;

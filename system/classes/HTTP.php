@@ -33,7 +33,7 @@ abstract class HTTP {
 		if (extension_loaded('http'))
 		{
 			// Use the fast method to parse header string
-			return new HTTP_Header(http_parse_headers($header_string));
+			return new HTTP\Header(http_parse_headers($header_string));
 		}
 
 		// Otherwise we use the slower PHP parsing
@@ -73,7 +73,7 @@ abstract class HTTP {
 		}
 
 		// Return the headers
-		return new HTTP_Header($headers);
+		return new HTTP\Header($headers);
 	}
 
 	/**
@@ -92,13 +92,13 @@ abstract class HTTP {
 		if (function_exists('apache_request_headers'))
 		{
 			// Return the much faster method
-			return new HTTP_Header(apache_request_headers());
+			return new HTTP\Header(apache_request_headers());
 		}
 		// If the PECL HTTP tools are installed
 		elseif (extension_loaded('http'))
 		{
 			// Return the much faster method
-			return new HTTP_Header(http_get_request_headers());
+			return new HTTP\Header(http_get_request_headers());
 		}
 
 		// Setup the output
@@ -128,7 +128,7 @@ abstract class HTTP {
 			$headers[str_replace(array('HTTP_', '_'), array('', '-'), $key)] = $value;
 		}
 
-		return new HTTP_Header($headers);
+		return new HTTP\Header($headers);
 	}
 
 	/**

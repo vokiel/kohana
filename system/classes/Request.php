@@ -295,7 +295,7 @@ class Request implements \HTTP\Request {
 			{
 				// If you ever see this error, please report an issue at http://dev.kohanaphp.com/projects/kohana3/issues
 				// along with any relevant information about your web server setup. Thanks!
-				throw new \Exception('Unable to detect the URI using PATH_INFO, REQUEST_URI, PHP_SELF or REDIRECT_URL');
+				Error::handler('Unable to detect the URI using PATH_INFO, REQUEST_URI, PHP_SELF or REDIRECT_URL');
 			}
 
 			// Get the path from the base URL, including the index file
@@ -1123,16 +1123,12 @@ class Request implements \HTTP\Request {
 	{
 		if ( ! $this->_route instanceof Route)
 		{
-			throw new HTTP\Exception('Unable to find a route to match the URI: :uri', array(
-				':uri' => $this->_uri,
-			));
+			Error::handler('Unable to find a route to match the URI: '.$this->_uri);
 		}
 
 		if ( ! $this->_client instanceof Request\Client)
 		{
-			throw new Request\Exception('Unable to execute :uri without a Kohana_Request_Client', array(
-				':uri' => $this->_uri,
-			));
+			Error::handler('Unable to execute :uri without a Kohana_Request_Client '.$this->_uri);
 		}
 
 		return $this->_client->execute($this);
@@ -1191,7 +1187,7 @@ class Request implements \HTTP\Request {
 	{
 	    if ($this->_response === NULL)
 		{
-			throw new Request\Exception('No response yet associated with request - cannot auto generate resource ETag');
+			Error::handler('No response yet associated with request - cannot auto generate resource ETag');
 		}
 
 		// Generate a unique hash for the response
@@ -1316,7 +1312,7 @@ class Request implements \HTTP\Request {
 	 */
 	public function headers($key = NULL, $value = NULL)
 	{
-		if ($key instanceof HTTP_Header)
+		if ($key instanceof HTTP\Header)
 		{
 			// Act a setter, replace all headers
 			$this->_header = $key;

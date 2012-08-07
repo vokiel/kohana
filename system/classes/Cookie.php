@@ -149,7 +149,7 @@ class Cookie {
 		// Require a valid salt
 		if ( ! Cookie::$salt)
 		{
-			throw new \Exception('A valid cookie salt is required. Please set Cookie::$salt.');
+			Error::handler('A valid cookie salt is required. Please set Cookie::$salt.');
 		}
 
 		// Determine the user agent

@@ -3,6 +3,7 @@ use Kohana as Kohana;
 use Profiler as Profiler;
 use Request as Request;
 use Request\Client as Client;
+use Error as Error;
 /**
  * Request Client for internal execution
  *
@@ -54,10 +55,10 @@ class Internal extends Client {
 		// Controller
 		$controller = $request->controller();
 
-		if ($directory)
+		if (!empty($directory))
 		{
 			// Add the directory name to the class prefix
-			$prefix .= str_replace(array('\\', '/'), '_', trim($directory, '/')).'_';
+			$prefix = $prefix.$directory.'\\';
 		}
 
 		if (Kohana::$profiling)
@@ -88,7 +89,8 @@ class Internal extends Client {
 		{
 			if ( ! class_exists($prefix.$controller))
 			{
-				throw new \Exception('The requested URL :uri was not found on this server.');
+				Error::handler('The requested URL :uri in  :directory was not found on this server.',
+					array(':uri' => $request->uri(), ':directory' => $prefix.$controller ));
 			}
 
 			// Load the controller using reflection
@@ -96,7 +98,7 @@ class Internal extends Client {
 
 			if ($class->isAbstract())
 			{
-				throw new \Exception('Cannot create instances of abstract :controller',
+				Error::handler('Cannot create instances of abstract :controller',
 					array(':controller' => $prefix.$controller));
 			}
 
@@ -113,8 +115,7 @@ class Internal extends Client {
 			// If the action doesn't exist, it's a 404
 			if ( ! $class->hasMethod('action_'.$action))
 			{
-				throw new HTTP_Exception_404('The requested URL :uri was not found on this server.',
-													array(':uri' => $request->uri()));
+				Error::handler('The requested action '.$request->uri().' was not found on this server.');
 			}
 
 			$method = $class->getMethod('action_'.$action);

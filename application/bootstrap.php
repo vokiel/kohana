@@ -20,7 +20,7 @@ date_default_timezone_set('America/Chicago');
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en_US.utf-8');
+setlocale(LC_ALL, 'pl_PL.utf-8');
 
 /**
  * Enable the Kohana auto-loader.
@@ -43,7 +43,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 /**
  * Set the default language
  */
-I18n::lang('en-us');
+I18n::lang('pl-pl');
 
 if ( ! function_exists('__'))
 {
@@ -111,7 +111,7 @@ Kohana::$log->attach(new Log\File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
+	 'lauth'       => MODPATH.'auth',       // Basic authentication
 	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	// 'database'   => MODPATH.'database',   // Database access
@@ -125,8 +125,16 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('root', 'root')
+	->defaults(array(
+		'directory' => 'Root',
+		'controller' => 'Hello',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
+		'directory' => 'Front',
 		'controller' => 'Welcome',
 		'action'     => 'index',
 	));

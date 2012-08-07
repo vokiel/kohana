@@ -105,7 +105,7 @@ class Route {
 	{
 		if ( ! isset(Route::$_routes[$name]))
 		{
-			throw new \Exception('The requested route does not exist: :route',
+			Error::handler('The requested route does not exist: :route',
 				array(':route' => $name));
 		}
 
@@ -529,7 +529,7 @@ class Route {
 				else
 				{
 					// Ungrouped parameters are required
-					throw new Kohana_Exception('Required route parameter not passed: :param', array(
+					Error::handler('Required route parameter not passed: :param', array(
 						':param' => $param,
 					));
 			}

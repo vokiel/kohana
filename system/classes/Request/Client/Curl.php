@@ -80,7 +80,7 @@ class Curl extends External {
 		// Set connection options
 		if ( ! curl_setopt_array($curl, $options))
 		{
-			throw new Request_Exception('Failed to set CURL options, check CURL documentation: :url',
+			Error::handler('Failed to set CURL options, check CURL documentation: :url',
 				array(':url' => 'http://php.net/curl_setopt_array'));
 		}
 
@@ -100,7 +100,7 @@ class Curl extends External {
 
 		if (isset($error))
 		{
-			throw new \Request\Exception('Error fetching remote :url [ status :code ] :error',
+			Error::handler('Error fetching remote :url [ status :code ] :error',
 				array(':url' => $request->url(), ':code' => $code, ':error' => $error));
 		}
 

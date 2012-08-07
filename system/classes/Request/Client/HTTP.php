@@ -32,7 +32,7 @@ class HTTP extends External {
 		// Check that PECL HTTP supports requests
 		if ( ! http_support(HTTP_SUPPORT_REQUESTS))
 		{
-			throw new \Exception('Need HTTP request support!');
+			Error::handler('Need HTTP request support!');
 		}
 
 		// Carry on
@@ -99,15 +99,15 @@ class HTTP extends External {
 		}
 		catch (\HTTPRequestException $e)
 		{
-			throw new \Request\Exception($e->getMessage());
+			Error::handler($e->getMessage());
 		}
 		catch (\HTTPMalformedHeaderException $e)
 		{
-			throw new Request_Exception($e->getMessage());
+			Error::handler($e->getMessage());
 		}
 		catch (\HTTPEncodingException $e)
 		{
-			throw new \Request\Exception($e->getMessage());
+			Error::handler($e->getMessage());
 		}
 
 		// Create the response

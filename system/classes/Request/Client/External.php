@@ -65,7 +65,7 @@ abstract class External extends Client {
 
 		if ( ! $client instanceof \Request\Client\External)
 		{
-			throw new \Exception('Selected client is not a Request_Client_External object.');
+			Error::handler('Selected client is not a Request_Client_External object.');
 		}
 
 		return $client;

@@ -47,17 +47,17 @@ class Config {
 
 		if( ! count($this->_sources))
 		{
-			throw new Exception('No configuration sources attached');
+			Error::handler('No configuration sources attached');
 		}
 
 		if (empty($group))
 		{
-			throw new Exception("Need to specify a config group");
+			Error::handler("Need to specify a config group");
 		}
 
 		if ( ! is_string($group))
 		{
-			throw new Exception("Config group must be a string");
+			Error::handler("Config group must be a string");
 		}
 
 		$sources = array_reverse($this->_sources);

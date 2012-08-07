@@ -1,6 +1,5 @@
 <?php namespace Kohana;
 
-use Exception as Exception;
 use Debug as Debug;
 use Log as Log;
 use Config as Config;
@@ -221,15 +220,6 @@ class Kohana {
 			Kohana::$errors = (bool) $settings['errors'];
 		}
 
-		if (Kohana::$errors === TRUE)
-		{
-			// Enable Kohana exception handling, adds stack traces and error source.
-//			set_exception_handler(array('Exception', 'handler'));
-
-			// Enable Kohana error handling, converts all PHP errors to exceptions.
-			set_error_handler(array('Kohana', 'error_handler'));
-		}
-
 		// Enable the Kohana shutdown handler, which catches E_FATAL errors.
 		register_shutdown_function(array('Kohana', 'shutdown_handler'));
 
@@ -267,8 +257,7 @@ class Kohana {
 				}
 				catch (Exception $e)
 				{
-					throw new Kohana_Exception('Could not create cache directory :dir',
-						array(':dir' => Debug::path($settings['cache_dir'])));
+					Error::handler('Could not create cache directory');
 				}
 			}
 
@@ -283,7 +272,7 @@ class Kohana {
 
 		if ( ! is_writable(Kohana::$cache_dir))
 		{
-			throw new \Exception('Directory \''.Kohana::$cache_dir.'\' must be writable');
+			Error::handler('Directory \''.Kohana::$cache_dir.'\' must be writable');
 		}
 
 		if (isset($settings['cache_life']))
@@ -525,31 +514,6 @@ class Kohana {
 		
 	}
 
-	public static function old_auto_load($class)
-	{
-		try
-		{
-			// Transform the class name into a path
-			$file = str_replace('_', '/', strtolower($class));
-
-			if ($path = Kohana::find_file('classes', $file))
-			{
-				// Load the class file
-				require $path;
-
-				// Class has been found
-				return TRUE;
-			}
-
-			// Class is not in the filesystem
-			return FALSE;
-		}
-		catch (Exception $e)
-		{
-			Kohana_Exception::handler($e);
-			die;
-		}
-	}
 
 	/**
 	 * Changes the currently enabled modules. Module paths may be relative
@@ -581,7 +545,7 @@ class Kohana {
 			else
 			{
 				// This module is invalid, remove it
-				throw new Exception('Attempted to load an invalid or missing module \':module\' at \':path\'', array(
+				Error::handler('Attempted to load an invalid or missing module \':module\' at \':path\'', array(
 					':module' => $name,
 					':path'   => Debug::path($path),
 				));
@@ -1024,17 +988,13 @@ class Kohana {
 		catch (Exception $e)
 		{
 			// Pass the exception to the handler
-			Exception::handler($e);
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 
 		if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors))
 		{
-			// Clean the output buffer
-			ob_get_level() and ob_clean();
 
-			// Fake an exception for nice debugging
-			//Exception::handler(new ErrorException($error['message'], $error['type'], 0, $error['file'], $error['line']));
-			throw new \Exception($error['message'].'-'.$error['line'].'-'.$error['file']);
+			echo \Error::handler($error['message']);
 			// Shutdown now to avoid a "death loop"
 			exit(1);
 		}

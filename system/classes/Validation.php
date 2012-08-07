@@ -66,7 +66,7 @@ class Validation implements \ArrayAccess {
 	 */
 	public function offsetSet($offset, $value)
 	{
-		throw new \Exception('Validation objects are read-only.');
+		Error::handler('Validation objects are read-only.');
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Validation implements \ArrayAccess {
 	 */
 	public function offsetUnset($offset)
 	{
-		throw new \Exception('Validation objects are read-only.');
+		Error::handler('Validation objects are read-only.');
 	}
 
 	/**

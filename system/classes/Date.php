@@ -60,7 +60,7 @@ class Date {
 		if (is_int($now))
 		{
 			// Convert the timestamp into a string
-			$now = date(DateTime::RFC2822, $now);
+			$now = date(\DateTime::RFC2822, $now);
 		}
 
 		// Create timezone objects
@@ -588,7 +588,7 @@ class Date {
 		$timestamp_format = ($timestamp_format == NULL) ? Date::$timestamp_format : $timestamp_format;
 		$timezone         = ($timezone === NULL) ? Date::$timezone : $timezone;
 
-		$time = new DateTime($datetime_str, new DateTimeZone(
+		$time = new \DateTime($datetime_str, new \DateTimeZone(
 			$timezone ? $timezone : date_default_timezone_get()
 		));
 
