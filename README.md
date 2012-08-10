@@ -6,7 +6,4 @@ Kohana Framework 3.2 with:
 - no feed, inflector and cli classes
 - __() function in bootstrap
 - modified `Config` classes
-
-ToDo:
-
-- new `Exception` class
+- exceptions width small `Error` class
