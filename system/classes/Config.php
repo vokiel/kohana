@@ -69,7 +69,7 @@ class Config {
 		{
 			return Arr::path($config, $path, NULL, '.');
 		}
-
+		$this->_sources = array();
 		return $this->_groups[$group];
 	}
 
