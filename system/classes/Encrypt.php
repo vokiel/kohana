@@ -66,7 +66,9 @@ class Encrypt {
 			if ( ! isset($config['key']))
 			{
 				// No default encryption key is provided!
-				Error::handler('No encryption key is defined in the encryption configuration group: '.$name);
+				Error::handler('No encryption key is defined in the encryption configuration group: :group', array(
+					':group' => $name,
+				));
 			}
 
 			if ( ! isset($config['mode']))

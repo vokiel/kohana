@@ -1,13 +1,14 @@
 <?php namespace Kohana;
 
 
+
 class Error extends \Exception {
 
-	public static function handler($msg, $values = array(), $code = 404, $view = false)
+	public static function handler($msg, $values = array(), $code = 'system', $view = false)
 	{
 
 
-			if (Request::$current !== NULL AND Request::current()->is_ajax() === TRUE)
+			if (\Request::$current !== NULL AND \Request::current()->is_ajax() === TRUE)
 			{
 				// Just display the text of the exception
 				echo "\n{".__($msg,$values)."}\n";

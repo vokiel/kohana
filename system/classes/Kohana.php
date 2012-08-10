@@ -3,6 +3,7 @@
 use Debug as Debug;
 use Log as Log;
 use Config as Config;
+use Error as Error;
 /**
  * Contains the most low-level helpers methods in Kohana:
  *
@@ -257,7 +258,7 @@ class Kohana {
 				}
 				catch (Exception $e)
 				{
-					Error::handler('Could not create cache directory');
+					Error::handler('Could not create cache directory',array(), 'chmod');
 				}
 			}
 
@@ -272,7 +273,9 @@ class Kohana {
 
 		if ( ! is_writable(Kohana::$cache_dir))
 		{
-			Error::handler('Directory \''.Kohana::$cache_dir.'\' must be writable');
+				Error::handler('Directory :dir must be writable', array(
+					':dir' => Kohana::$cache_dir,
+				), 'chmod');
 		}
 
 		if (isset($settings['cache_life']))
