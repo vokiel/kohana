@@ -60,21 +60,6 @@ class Config {
 			Error::handler("Config group must be a string");
 		}
 
-			if (strpos($group, '.') !== FALSE)
-		{
-			// Split the config group and path
-			list ($group, $path) = explode('.', $group, 2);
-		}
-
-		if(isset($this->_groups[$group]))
-		{
-			if (isset($path))
-			{
-				return Arr::path($this->_groups[$group], $path, NULL, '.');
-			}
-			return $this->_groups[$group];
-		}
-
 		// We search from the "lowest" source and work our way up
 		$sources = array_reverse($this->_sources);
 
