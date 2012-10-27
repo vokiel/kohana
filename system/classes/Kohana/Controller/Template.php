@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php namespace Kohana\Controller;
 /**
  * Abstract controller class for automatic templating.
  *
@@ -8,7 +8,7 @@
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-abstract class Kohana_Controller_Template extends Controller {
+abstract class Template extends \Kohana\Controller {
 
 	/**
 	 * @var  View  page template
