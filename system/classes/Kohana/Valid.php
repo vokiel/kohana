@@ -548,4 +548,4 @@ class Valid {
 		return ($array[$field] === $array[$match]);
 	}
 
-} // End Valid
+}
