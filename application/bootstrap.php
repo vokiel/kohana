@@ -93,7 +93,8 @@ Kohana::$log->attach(new Log\File(APPPATH.'logs'));
  */
 Kohana::modules(array(
 	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	 'feed'      => MODPATH.'feed',      // Feed
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	// 'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
