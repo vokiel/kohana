@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php namespace Kohana\Session;
 /**
  * Cookie-based session class.
  *
@@ -8,7 +8,7 @@
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Kohana_Session_Cookie extends Session {
+class Cookie extends \Kohana\Session {
 
 	/**
 	 * @param   string  $id  session id
@@ -52,4 +52,4 @@ class Kohana_Session_Cookie extends Session {
 		return Cookie::delete($this->_name);
 	}
 
-} // End Session_Cookie
+}

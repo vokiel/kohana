@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php namespace Kohana\Session;
 /**
  * Native PHP session class.
  *
@@ -8,7 +8,7 @@
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Kohana_Session_Native extends Session {
+class Native extends \Kohana\Session {
 
 	/**
 	 * @return  string
@@ -25,7 +25,7 @@ class Kohana_Session_Native extends Session {
 	protected function _read($id = NULL)
 	{
 		// Sync up the session cookie with Cookie parameters
-		session_set_cookie_params($this->_lifetime, Cookie::$path, Cookie::$domain, Cookie::$secure, Cookie::$httponly);
+		session_set_cookie_params($this->_lifetime, \Kohana\Cookie::$path, \Kohana\Cookie::$domain, \Kohana\Cookie::$secure, \Kohana\Cookie::$httponly);
 
 		// Do not allow PHP to send Cache-Control headers
 		session_cache_limiter(FALSE);
@@ -98,10 +98,10 @@ class Kohana_Session_Native extends Session {
 		if ($status)
 		{
 			// Make sure the session cannot be restarted
-			Cookie::delete($this->_name);
+			\Kohana\Cookie::delete($this->_name);
 		}
 
 		return $status;
 	}
 
-} // End Session_Native
+}
