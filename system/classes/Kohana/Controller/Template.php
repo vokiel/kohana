@@ -2,7 +2,6 @@
 
 abstract class Template extends \Kohana\Controller {
 
-
 	public $template = 'template';
 	public $auto_render = TRUE;
 

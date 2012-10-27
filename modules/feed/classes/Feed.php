@@ -1,4 +1,4 @@
-<?php namespace Kohana;
+<?php
 /**
  * RSS and Atom feed helper.
  *
@@ -21,7 +21,7 @@ class Feed {
 	{
 		// Check if SimpleXML is installed
 		if ( ! function_exists('simplexml_load_file'))
-			throw new Exception('SimpleXML must be installed!');
+			throw new \Kohana\Exception('SimpleXML must be installed!');
 
 		// Make limit an integer
 		$limit = (int) $limit;
@@ -30,10 +30,10 @@ class Feed {
 		$error_level = error_reporting(0);
 
 		// Allow loading by filename or raw XML string
-		if (Valid::url($feed))
+		if (\Kohana\Valid::url($feed))
 		{
 			// Use native Request client to get remote contents
-			$response = Request::factory($feed)->execute();
+			$response = \Kohana\Request::factory($feed)->execute();
 			$feed     = $response->body();
 		}
 		elseif (is_file($feed))
@@ -101,19 +101,19 @@ class Feed {
 
 				if ( ! isset($value['link'], $value['url'], $value['title']))
 				{
-					throw new Kohana_Exception('Feed images require a link, url, and title');
+					throw new \Kohana\Exception('Feed images require a link, url, and title');
 				}
 
 				if (strpos($value['link'], '://') === FALSE)
 				{
 					// Convert URIs to URLs
-					$value['link'] = URL::site($value['link'], 'http');
+					$value['link'] = \Kohana\URL::site($value['link'], 'http');
 				}
 
 				if (strpos($value['url'], '://') === FALSE)
 				{
 					// Convert URIs to URLs
-					$value['url'] = URL::site($value['url'], 'http');
+					$value['url'] = \Kohana\URL::site($value['url'], 'http');
 				}
 
 				// Create the image elements
@@ -131,7 +131,7 @@ class Feed {
 				elseif (($name === 'link' OR $name === 'docs') AND strpos($value, '://') === FALSE)
 				{
 					// Convert URIs to URLs
-					$value = URL::site($value, 'http');
+					$value = \Kohana\URL::site($value, 'http');
 				}
 
 				// Add the info to the channel
@@ -154,7 +154,7 @@ class Feed {
 				elseif (($name === 'link' OR $name === 'guid') AND strpos($value, '://') === FALSE)
 				{
 					// Convert URIs to URLs
-					$value = URL::site($value, 'http');
+					$value = \Kohana\URL::site($value, 'http');
 				}
 
 				// Add the info to the row
