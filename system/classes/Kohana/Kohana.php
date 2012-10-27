@@ -1019,7 +1019,7 @@ class Kohana {
 		catch (\Exception $e)
 		{
 			// Pass the exception to the handler
-			\Kohana\Exception::handler($e);
+			Exception::handler($e);
 		}
 
 		if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors))
