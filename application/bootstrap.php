@@ -95,7 +95,7 @@ Kohana::modules(array(
 	// 'auth'       => MODPATH.'auth',       // Basic authentication
 	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	 'feed'      => MODPATH.'feed',      // Feed
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+	 'pagination'  => MODPATH.'pagination',  // Pagination module
 	 'database'   => MODPATH.'database',   // Database access
 	 'image'      => MODPATH.'image',      // Image manipulation
 	// 'minion'     => MODPATH.'minion',     // CLI Tasks
