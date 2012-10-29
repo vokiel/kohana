@@ -39,7 +39,7 @@ abstract class External extends \Kohana\Request\Client {
 	 * 
 	 * @var     string    defines the external client to use by default
 	 */
-	public static $client = 'Request_Client_Curl';
+	public static $client = 'Curl';
 
 	/**
 	 * Factory method to create a new Request_Client_External object based on

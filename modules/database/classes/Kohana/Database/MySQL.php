@@ -198,7 +198,7 @@ class MySQL extends \Kohana\Database {
 
 		if (isset($benchmark))
 		{
-			Profiler::stop($benchmark);
+			\Kohana\Profiler::stop($benchmark);
 		}
 
 		// Set the last query
@@ -207,7 +207,7 @@ class MySQL extends \Kohana\Database {
 		if ($type === \Kohana\Database::SELECT)
 		{
 			// Return an iterator of results
-			return new Database_MySQL_Result($result, $sql, $as_object, $params);
+			return new \Kohana\Database\MySQL\Result($result, $sql, $as_object, $params);
 		}
 		elseif ($type === \Kohana\Database::INSERT)
 		{
@@ -250,7 +250,7 @@ class MySQL extends \Kohana\Database {
 			'mediumtext'                => array('type' => 'string', 'character_maximum_length' => '16777215'),
 			'national varchar'          => array('type' => 'string'),
 			'numeric unsigned'          => array('type' => 'float', 'exact' => TRUE, 'min' => '0'),
-			'nvarchar'                  => array('type' => 'string'),
+			'varchar'                  => array('type' => 'string'),
 			'point'                     => array('type' => 'string', 'binary' => TRUE),
 			'real unsigned'             => array('type' => 'float', 'min' => '0'),
 			'set'                       => array('type' => 'string'),
@@ -369,7 +369,7 @@ class MySQL extends \Kohana\Database {
 			$column['column_name']      = $row['Field'];
 			$column['column_default']   = $row['Default'];
 			$column['data_type']        = $type;
-			$column['is_nullable']      = ($row['Null'] == 'YES');
+			$column['is_nullable']      = ($row['Null'] === 'YES');
 			$column['ordinal_position'] = ++$count;
 
 			switch ($column['type'])

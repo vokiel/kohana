@@ -390,7 +390,7 @@ abstract class Client {
 					break;
 				case 201:
 				case 303:
-					$follow_method = Request::GET;
+					$follow_method = \Kohana\Request::GET;
 					break;
 				case 302:
 					// Cater for sites with broken HTTP redirect implementations

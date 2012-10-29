@@ -1,5 +1,4 @@
 <?php namespace Kohana;
-
 /**
  * The directory in which your application specific resources are located.
  * The application directory must contain the bootstrap.php file.
@@ -101,21 +100,8 @@ if ( ! defined('KOHANA_START_MEMORY'))
 // Bootstrap the application
 require APPPATH.'bootstrap'.EXT;
 
-if (PHP_SAPI == 'cli') // Try and load minion
-{
-	class_exists('Minion\Task') OR die('Please enable the Minion module for CLI support.');
-	set_exception_handler(array('Minion\Exception', 'handler'));
 
-	Minion\Task::factory(Minion\CLI::options())->execute();
-}
-else
-{
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo Request::factory(TRUE, array(), FALSE)
+echo Request::factory()
 		->execute()
 		->send_headers(TRUE)
 		->body();
-}
