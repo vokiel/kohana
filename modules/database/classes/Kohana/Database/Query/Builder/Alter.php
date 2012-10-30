@@ -104,7 +104,7 @@ class Alter extends \Kohana\Database\Query\Builder {
 		return $this;
 	}
 	
-	public function compile(\Kohana\Database $db)
+	public function compile($db= NULL)
 	{
 		if ($sql = $this->_compile_add($db))
 		{

@@ -14,7 +14,7 @@ class Drop extends \Kohana\Database\Query\Builder {
 		parent::__construct(\Kohana\Database::DROP, '');
 	}
 	
-	public function compile(\Kohana\Database $db)
+	public function compile($db = NULL)
 	{
 		switch($this->_drop_type)
 		{

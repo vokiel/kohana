@@ -42,4 +42,42 @@ class Welcome extends \Kohana\Controller {
 
 	}
 
+	// sample DROP table
+
+	public function action_droptable()
+	{
+
+		$table = \Kohana\DB::drop('table','test')->execute();
+
+	}
+
+	// sample DROP constraint
+
+	public function action_dropconstraint()
+	{
+
+		$table = \Kohana\DB::alter('test')->drop('fk_test_uid_users_id','foreign key')->execute();
+
+	}
+
+	//sample add constraint
+
+	public function action_addconstraint()
+	{
+		$fk = \Kohana\Database\Constraint::foreign_key('uid','test')->references('users', 'id')->on_update('cascade')->on_delete('cascade');
+		$table = \Kohana\DB::alter('test')->add($fk)->execute();
+
+	}
+
+	public function action_addcolumn()
+	{
+			$column = array('type'=>'varchar','name'=>'names','max_length'=>32,'default'=>'Radek','nullable'=> FALSE);
+			$c = \Kohana\Database\Column::factory($column['type']);
+			foreach ($column as $key => $val)
+			{
+				$c->$key = $val;
+			}
+		$table = \Kohana\DB::alter('test')->add($c)->execute();
+
+	}
 }
