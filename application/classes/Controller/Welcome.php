@@ -71,7 +71,7 @@ class Welcome extends \Kohana\Controller {
 
 	public function action_addcolumn()
 	{
-			$column = array('type'=>'varchar','name'=>'names','max_length'=>32,'default'=>'Radek','nullable'=> FALSE);
+			$column = array('type'=>'varchar','name'=>'onut','max_length'=>32,'default'=>'Radek','nullable'=> FALSE,'after'=>'uid');
 			$c = \Kohana\Database\Column::factory($column['type']);
 			foreach ($column as $key => $val)
 			{

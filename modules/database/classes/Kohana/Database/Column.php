@@ -103,6 +103,14 @@ abstract class Column {
 	 */
 	public $ordinal_position;
 	
+
+	/**
+	 * The ordinal position of the column.
+	 * 
+	 * @var	int
+	 */
+	public $after;
+
 	/**
 	 * 
 	 * 
@@ -141,6 +149,7 @@ abstract class Column {
 			$this->default = \Kohana\Arr::get($schema, 'column_default');
 			$this->is_nullable = \Kohana\Arr::get($schema, 'is_nullable') === 'YES';
 			$this->ordinal_position = \Kohana\Arr::get($schema, 'ordinal_position');
+			$this->after = \Kohana\Arr::get($schema, 'after');
 			$this->datatype = \Kohana\Arr::get($schema, 'data_type');
 			
 			$this->_load_schema($schema);
@@ -192,7 +201,7 @@ abstract class Column {
 	{
 		return Query\Builder::compile_column($this, $db);
 	}
-	
+
 	/**
 	 * Returns the column's constraints.
 	 * 
@@ -206,12 +215,17 @@ abstract class Column {
 		{
 			$constraints[] = 'not null';
 		}
-		
+
 		if ($this->default)
 		{
 			$constraints['default'] = $this->default;
 		}
-		
+
+		if ($this->after)
+		{
+			$constraints['after'] = \Kohana\DB::expr($this->_db->quote_identifier($this->after));
+		}
+
 		return array_merge($constraints, $this->_constraints());
 	}
 	
