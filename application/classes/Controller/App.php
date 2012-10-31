@@ -2,8 +2,6 @@
 
 class App extends \Controller\Index {
 
-
-	// load config file
 	public function menu()
 	{
 		$menu = array(
@@ -17,7 +15,6 @@ class App extends \Controller\Index {
 		return $menu;
 	}
 
-	// load config file
 	public function sub()
 	{
 		$this->ctitle = 'Gotowe rozwiązania';

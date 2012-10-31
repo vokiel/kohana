@@ -2,8 +2,6 @@
 
 class Roadmap extends \Controller\Index {
 
-
-	// load config file
 	public function menu()
 	{
 		$menu = array(
@@ -14,7 +12,6 @@ class Roadmap extends \Controller\Index {
 		return $menu;
 	}
 
-	// load config file
 	public function sub()
 	{
 		$this->ctitle = 'Plan rozwoju';

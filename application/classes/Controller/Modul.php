@@ -2,8 +2,6 @@
 
 class Modul extends \Controller\Index {
 
-
-	// load config file
 	public function menu()
 	{
 		$menu = array(
@@ -33,7 +31,6 @@ class Modul extends \Controller\Index {
 		return $menu;
 	}
 
-	// load config file
 	public function sub()
 	{
 		$this->ctitle = 'Moduły i dodatki';

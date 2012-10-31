@@ -80,7 +80,6 @@ class Template extends \Kohana\Controller\Template {
 
 	}
 
-	// load config file
 	public function mainmenu()
 	{
 		$menu = array(

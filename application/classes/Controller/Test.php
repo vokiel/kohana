@@ -2,8 +2,6 @@
 
 class Doc extends \Controller\Index {
 
-
-	// load config file
 	public function menu()
 	{
 		$menu = array(
