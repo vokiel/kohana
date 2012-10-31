@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <title><?php echo $title; ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php foreach ($links as $value) echo '<link'.HTML::attributes($value).' />',"\n" ?>
 <?php foreach ($styles as $file => $type) echo HTML::style($file, array('media' => $type)), "\n" ?>
 <?php foreach ($scripts as $file) echo HTML::script($file), "\n" ?>
 </head>
