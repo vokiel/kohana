@@ -27,6 +27,7 @@ class Modul extends \Controller\Index {
 			array('slug'=>'bootstrap','title'=>'Bootstrap template'),
 			array('slug'=>'markitup','title'=>'Markitup editor'),
 			array('slug'=>'wysibb','title'=>'WysiBB editor'),
+			array('slug'=>'oauth2','title'=>'OAuth2 client'),
 		);
 
 		return $menu;
