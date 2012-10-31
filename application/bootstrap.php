@@ -80,6 +80,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/',
+	'index_file'   => FALSE,
 ));
 
 /**
@@ -112,10 +113,19 @@ Kohana::modules(array(
 Route::set('media/media', 'media(/<file>)', array('file' => '.+'))
 	->defaults(array('controller' => 'Media', 'action' => 'media', 'file' => NULL));
 
-Route::set('default', '(<controller>(/<action>(/<id>)))')
+Route::set('<controller>', '<controller>(/<sub>(/<page>))')
 	->defaults(array(
-		'controller' => 'welcome',
+		'controller' => 'doc',
 		'action'     => 'index',
+		'sub'     => 'index',
+		'page'     => 1,
+	));
+
+Route::set('default', '(<controller>(/<action>(/<sub>)))')
+	->defaults(array(
+		'controller' => 'index',
+		'action'     => 'index',
+		'sub'     => 'index',
 	));
 
 Cookie::$salt = '123abc';
