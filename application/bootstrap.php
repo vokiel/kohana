@@ -93,16 +93,27 @@ Kohana::$log->attach(new Log\File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
+	 'wysibb'      => MODPATH.'wysibb',      // Wysibb editor
+	 'theme'      => MODPATH.'theme',      // Theme and views system
+	 'swiftmailer'      => MODPATH.'swiftmailer',      // Swiftmailer
+	 'sitemap'      => MODPATH.'sitemap',      // Sitemap
+	 'simpleauth'      => MODPATH.'simpleauth',      // Simpleauth
+	 'riudb'      => MODPATH.'riudb',      // RiuDB
+	 'profilertoolbar'      => MODPATH.'profilertoolbar',      // Profilertoolbar
+	 'oauth2'      => MODPATH.'oauth2',      // OAuth2
+	 'menu'      => MODPATH.'menu',      // Menu generator
+	 'markitup'      => MODPATH.'markitup',      // Markitup editor
+	 'kostache'      => MODPATH.'kostache',      // Views templates
+	 'breadcrumb'      => MODPATH.'breadcrumb',      // Breadcrumbs
+	 'bootstrap'      => MODPATH.'bootstrap',      // Bootstrap templates
+	 'analitics'      => MODPATH.'analitics',      // Google analitics
 	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	 'feed'      => MODPATH.'feed',      // Feed
 	 'pagination'  => MODPATH.'pagination',  // Pagination module
 	 'database'   => MODPATH.'database',   // Database access
 	 'image'      => MODPATH.'image',      // Image manipulation
-	// 'minion'     => MODPATH.'minion',     // CLI Tasks
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	 'markdown'      => MODPATH.'markdown',      // Image manipulation
+	 'starter'      => MODPATH.'starter',      // Hanariu starter page
 	));
 
 /**
@@ -118,7 +129,6 @@ Route::set('<controller>', '<controller>(/<sub>(/<page>))')
 		'controller' => 'doc',
 		'action'     => 'index',
 		'sub'     => 'index',
-		'page'     => 1,
 	));
 
 Route::set('default', '(<controller>(/<action>(/<sub>)))')
