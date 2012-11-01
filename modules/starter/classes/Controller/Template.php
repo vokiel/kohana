@@ -108,11 +108,12 @@ class Template extends \Kohana\Controller\Template {
 		{
 			$file = $this->sub.'.'.$this->page;
 		}
-
+		
 		$file = Kohana::find_file('guide', $this->controller.DIRECTORY_SEPARATOR.$file, 'md');
 		if(!empty($file))
 		{
-			$this->text = \Kohana\Markdown::parse(file_get_contents($file));
+			include_once Kohana::find_file('vendor', 'markdown/markdown');
+			$this->text = Markdown(file_get_contents($file));
 		}
 		else
 		{
