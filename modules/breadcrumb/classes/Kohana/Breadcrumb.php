@@ -2,20 +2,24 @@
 
 class Breadcrumb {
 
+  	public $crumbview = 'breadcrumb';
   	public $crumbs = array();
   	public $countcrumbs;
 
-	public function __construct() 
+	public function __construct($view = FALSE) 
 	{
-
+		if(!empty($empty))
+		{
+			$this->crumbview = $view;
+		}
 		$this->countcrumbs = 1;
 		$this->crumbs = array( 0 => array('url'=>URL::base(),'crumb'=>__('breadcrumb.crumb'),'title'=>__('breadcrumb.title')));
 
 	}
 
-	public static function factory()
+	public static function factory($view = FALSE)
 	{
-		return new Breadcrumb();
+		return new Breadcrumb($view);
 
 	}
 
@@ -59,6 +63,6 @@ class Breadcrumb {
 
 	public function render()
 	{
-		return View::factory('breadcrumb')->bind('crumbs',$this->crumbs)->bind('count',$this->countcrumbs)->render();
+		return View::factory($this->crumbview)->bind('crumbs',$this->crumbs)->bind('count',$this->countcrumbs)->render();
 	}
 }
