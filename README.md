@@ -16,7 +16,7 @@ Breadcrumb | ✔ | - | Dostępny
 Kostache | - | - |  Planowany
 Markitup editor | - | - |  Planowany
 Menu generator | - | - |  Planowany
-OAuth2 client | - | - |  Planowany
+OAuth2 client | - | - |  Dostępny
 Profilertoolbar | - | - |  Planowany
 Riu DB | ✔ |	- | Dostępny
 Simple Auth | - | - |  Planowany
