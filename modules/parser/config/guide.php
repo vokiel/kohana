@@ -3,6 +3,6 @@
 return array
 (
 	'modul' => array(
-			array('slug'=>'markdown','title'=>'Markdown','is_doc'=>0,'is_tutorial'=>0,'status'=>1),
+			array('slug'=>'parser','title'=>'Parser','is_doc'=>1,'is_tutorial'=>0,'status'=>3),
 		),
 );

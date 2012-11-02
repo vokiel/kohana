@@ -112,7 +112,7 @@ Kohana::modules(array(
 	 'pagination'  => MODPATH.'pagination',  // Pagination module
 	 'database'   => MODPATH.'database',   // Database access
 	 'image'      => MODPATH.'image',      // Image manipulation
-	 'markdown'      => MODPATH.'markdown',      // Image manipulation
+	 'parser'      => MODPATH.'parser',      // Markdown and bbcode parser
 	 'starter'      => MODPATH.'starter',      // Hanariu starter page
 	));
 
