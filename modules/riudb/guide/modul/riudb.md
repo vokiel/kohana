@@ -6,6 +6,16 @@ Mechanizm składowania danych dla systemów zarządzania treścią.
 
 RiuDB to koncept zarządzania i archiwizowania informacji za pomocą plików JSON i relacyjnych baz danych. Bezpośrednią inspiracją do jego stworzenia były porównania możliwości relacyjnych i nierelacyjnych baz danych w kontekście tworzenia aplikacji społecznościowych takich jak Facebook, czy G+. 
 
+#### Instalacja
+
+Aby korzystać z tego modułu oprócz standardowego dodania w bootstrap.php należy zdefiniować ścieżkę do katalogu plików json `db` (lub innego). Należy to zrobić w głównym folderze index.php
+
+	$riudb = 'db';
+	if ( ! is_dir($riudb) AND is_dir(DOCROOT.$riudb))
+	$riudb = DOCROOT.$riudb;
+	define('DBPATH', realpath($riudb).DIRECTORY_SEPARATOR);
+	unset($application, $modules, $system, $riudb);
+
 #### Opis
 
 RiuDB działa w oparciu o koncepcje unikalnych identyfikatorów - podobnie jak w MongoDB każdy rekord zapisywany do bazy MySQL otrzymuję unikalny id. Oprócz tego w bazie przetrzymywane jest informacja (moduł) definiowana przez programistę - czym ma być dany rekord np: tagiem, wpisem na forum, użytkownikiem. (o powstawaniu koncepcji można przeczytać tutaj - http://forum.kohanaphp.pl/index.php/topic,961.0.html )

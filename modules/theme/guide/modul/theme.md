@@ -2,7 +2,17 @@
 
 Moduł do obsługi skórek i plików widoków spoza modułów.
 
-### Podstawowy opis
+#### Instalacja
+
+Aby korzystać z tego modułu oprócz standardowego dodania w bootstrap.php należy zdefiniować ścieżkę do katalogu skórek `themes`. Należy to zrobić w głównym folderze index.php
+
+	$themes = 'theme';
+	if ( ! is_dir($themes) AND is_dir(DOCROOT.$themes))
+	$themes = DOCROOT.$themes;
+	define('THEMEPATH', realpath($themes).DIRECTORY_SEPARATOR);
+	unset($application, $modules, $system, $themes);
+
+#### Podstawowy opis
 
 Moduł ten jest rozszerzeniem klasy `View`. Działa w identyczny sposób jak klasa `View` jednak wczytywanie pliku widoku odbywa się z katalogu `themes/nazwa_skórki`. Przykład:
 
