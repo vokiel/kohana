@@ -1,6 +1,6 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 2 lis, 19:32)
+Aktualny postęp prac nad modułami (aktualizacja: 2 lis, 20:01)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
@@ -22,5 +22,5 @@ Riu DB | ✔ |	- | __Dostępny__
 Simple Auth | - | - |  Planowany
 Sitemap | - | - |  Planowany
 Swift Mailer | - | - |  Planowany
-Theme | - | - |  Planowany
+Theme | ✔ | - |  __Dostępny__
 WysiBB editor | - | - |  Planowany
