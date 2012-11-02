@@ -1,24 +1,24 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 2 lis, 18:46)
+Aktualny postęp prac nad modułami (aktualizacja: 2 lis, 19:32)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
-Parser | ✔ |	- | W realizacji
-Image | - | - |  Dostępny
-Database | - | - |  Dostępny
-Pagination | - | - |  Dostępny
-Feed | - | - |  Dostępny
-Cache | - | - |  Dostępny
+Parser | ✔ |	- | ***W realizacji***
+Image | - | - |  __Dostępny__
+Database | - | - |  __Dostępny__
+Pagination | - | - |  __Dostępny__
+Feed | - | - |  __Dostępny__
+Cache | - | - |  __Dostępny__
 Google analitics | - | - |  Planowany
 Bootstrap template | - | - |  Planowany
-Breadcrumb | ✔ | - | Dostępny
+Breadcrumb | ✔ | - | __Dostępny__
 Kostache | - | - |  Planowany
 Markitup editor | - | - |  Planowany
 Menu generator | - | - |  Planowany
-OAuth2 client | - | - |  Dostępny
+OAuth2 client | - | - |  __Dostępny__
 Profilertoolbar | - | - |  Planowany
-Riu DB | ✔ |	- | Dostępny
+Riu DB | ✔ |	- | __Dostępny__
 Simple Auth | - | - |  Planowany
 Sitemap | - | - |  Planowany
 Swift Mailer | - | - |  Planowany
