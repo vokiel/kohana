@@ -4,7 +4,7 @@ Parsowanie i deparsowanie dokumentów za pomocą Markdown i BBcode.
 
 ### Podstawowy opis
 
-Moduł służy do obsługi znaczników Markdown i BBcode, ich zamiany na znaczniki html oraz deparsowania kodu html z powortem na określone znaczniki. Funkcja deparsowania jest przydatna przynajmniej w dwóch powodów:
+Moduł służy do obsługi znaczników Markdown i BBcode, ich zamiany na znaczniki html oraz deparsowania kodu html z powrotem na określone znaczniki. Funkcja deparsowania jest przydatna przynajmniej w dwóch powodów:
 
 - przy imporcie danych zapisanych w html
 - przy edycji danych w html
