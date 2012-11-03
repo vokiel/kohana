@@ -1,6 +1,6 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 2 lis, 20:09)
+Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 14:38)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
@@ -17,6 +17,7 @@ Kostache | - | - |  Planowany
 Markitup editor | - | - |  Planowany
 Menu generator | - | - |  Planowany
 OAuth2 client | - | - |  __Dostępny__
+Debug Toolbar | ✔ | - |  __Dostępny__
 Developerbar | ✔ | - |  __Dostępny__
 Riu DB | ✔ |	- | __Dostępny__
 Simple Auth | - | - |  Planowany

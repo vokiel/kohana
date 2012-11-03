@@ -100,6 +100,7 @@ Kohana::modules(array(
 	 'simpleauth'      => MODPATH.'simpleauth',      // Simpleauth
 	 'riudb'      => MODPATH.'riudb',      // RiuDB
 	 'developerbar'      => MODPATH.'developerbar',      // Profilertoolbar
+	 'debug-toolbar'      => MODPATH.'debug-toolbar',      // Debug Toolbar
 	 'oauth2'      => MODPATH.'oauth2',      // OAuth2
 	 'menu'      => MODPATH.'menu',      // Menu generator
 	 'markitup'      => MODPATH.'markitup',      // Markitup editor
