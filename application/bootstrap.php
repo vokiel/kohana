@@ -107,7 +107,7 @@ Kohana::modules(array(
 	 'kostache'      => MODPATH.'kostache',      // Views templates
 	 'breadcrumb'      => MODPATH.'breadcrumb',      // Breadcrumbs
 	 'bootstrap'      => MODPATH.'bootstrap',      // Bootstrap templates
-	 'analitics'      => MODPATH.'analitics',      // Google analitics
+	 'analytics'      => MODPATH.'analytics',      // Google analitics
 	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	 'feed'      => MODPATH.'feed',      // Feed
 	 'pagination'  => MODPATH.'pagination',  // Pagination module
