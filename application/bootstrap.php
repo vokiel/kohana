@@ -99,7 +99,7 @@ Kohana::modules(array(
 	 'sitemap'      => MODPATH.'sitemap',      // Sitemap
 	 'simpleauth'      => MODPATH.'simpleauth',      // Simpleauth
 	 'riudb'      => MODPATH.'riudb',      // RiuDB
-	 'profilertoolbar'      => MODPATH.'profilertoolbar',      // Profilertoolbar
+	 'developerbar'      => MODPATH.'developerbar',      // Profilertoolbar
 	 'oauth2'      => MODPATH.'oauth2',      // OAuth2
 	 'menu'      => MODPATH.'menu',      // Menu generator
 	 'markitup'      => MODPATH.'markitup',      // Markitup editor

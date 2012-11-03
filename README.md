@@ -17,7 +17,7 @@ Kostache | - | - |  Planowany
 Markitup editor | - | - |  Planowany
 Menu generator | - | - |  Planowany
 OAuth2 client | - | - |  __Dostępny__
-Profilertoolbar | - | - |  Planowany
+Developerbar | ✔ | - |  __Dostępny__
 Riu DB | ✔ |	- | __Dostępny__
 Simple Auth | - | - |  Planowany
 Sitemap | - | - |  Planowany

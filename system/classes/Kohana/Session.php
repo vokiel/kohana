@@ -48,7 +48,7 @@ abstract class Session {
 			$config = Kohana::$config->load('session')->get($type);
 
 			// Set the session class name
-			$class = 'Session_'.ucfirst($type);
+			$class = '\\Kohana\\Session\\'.ucfirst($type);
 
 			// Create a new session instance
 			Session::$instances[$type] = $session = new $class($config, $id);
