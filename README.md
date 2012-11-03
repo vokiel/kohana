@@ -1,6 +1,6 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 19:17)
+Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 20:06)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
