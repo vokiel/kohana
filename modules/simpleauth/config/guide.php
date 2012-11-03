@@ -3,6 +3,6 @@
 return array
 (
 	'modul' => array(
-			array('slug'=>'simpleauth','title'=>'Simple Auth','is_doc'=>0,'is_tutorial'=>0,'status'=>4),
+			array('slug'=>'simpleauth','title'=>'Simple Auth','is_doc'=>0,'is_tutorial'=>0,'status'=>1),
 		),
 );

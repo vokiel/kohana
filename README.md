@@ -20,7 +20,7 @@ OAuth2 client | - | - |  __Dostępny__
 Debug Toolbar | ✔ | - |  __Dostępny__
 Developerbar | ✔ | - |  __Dostępny__
 Riu DB | ✔ |	- | __Dostępny__
-Simple Auth | - | - |  Planowany
+Simple Auth | - | - |  __Dostępny__
 Sitemap | ✔ | - |  __Dostępny__
 Swift sender | ✔ | - |  __Dostępny__
 Theme | ✔ | - |  __Dostępny__
