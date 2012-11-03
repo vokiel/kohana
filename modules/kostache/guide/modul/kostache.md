@@ -3,7 +3,7 @@
 Kostache to moduł implementujący system szablonów [Mustache](http://defunkt.github.com/mustache/).
 
 
-### Użycie
+#### Użycie
 
 W folderze classes/View/ znajdują się klasy widoków w których nadajemy wartości zmiennym
 
@@ -41,7 +41,7 @@ Definujesz części za pomocą tablicy $_partials w klasie widoku.  Klucze to zm
 		'footer' => 'footer/default', // Załaduje templates/footer/default.mustache
 	);
 
-## Korzystanie z  \Kohana\Kostache\Layout class
+#### Korzystanie z  \Kohana\Kostache\Layout class
 
 Kostache\Layout rozszerze możliwości szblonu. Aby korzystać z tego należy roszerzyć klasę widoku o Kostache\Layout i dzięki temu określić szablon który zastąpi templates/layout.mustache. Jedyneym wymaganiem jest zdefiniowanie częśći {{>content}}.
 
@@ -53,7 +53,7 @@ Jeśli z tego korzystasz, ale chcesz renderować tylko fragment a nie cały szab
         $view->render_layout = FALSE;
     }
 
-## Mustache - dokumentacja
+#### Mustache - dokumentacja
 
 Szczegóły znajdziesz pod adresami:
 
@@ -62,7 +62,7 @@ Szczegóły znajdziesz pod adresami:
 [Original Mustache](http://defunkt.github.com/mustache/)
 
 
-## Kompleksowy przykład 
+#### Kompleksowy przykład 
 
 Model (Przykład korzysta z [AutoModeler](http://github.com/zombor/Auto-Modeler)):
 
@@ -134,7 +134,7 @@ Controller:
 
 	} // End Welcome
 
-## Pobieranie jednego obiektu
+#### Pobieranie jednego obiektu
 
 Model (Przykład korzysta z [AutoModeler](http://github.com/zombor/Auto-Modeler)):
 
