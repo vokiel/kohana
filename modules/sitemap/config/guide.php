@@ -3,6 +3,6 @@
 return array
 (
 	'modul' => array(
-			array('slug'=>'sitemap','title'=>'Sitemap','is_doc'=>0,'is_tutorial'=>0,'status'=>4),
+			array('slug'=>'sitemap','title'=>'Sitemap','is_doc'=>1,'is_tutorial'=>0,'status'=>1),
 		),
 );

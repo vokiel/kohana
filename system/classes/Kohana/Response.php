@@ -551,7 +551,7 @@ class Response implements HTTP\Response {
 				// Attempt to remove the file
 				unlink($filename);
 			}
-			catch (Exception $e)
+			catch (\Exception $e)
 			{
 				// Create a text version of the exception
 				$error = Exception::text($e);
