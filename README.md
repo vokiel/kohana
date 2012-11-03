@@ -1,6 +1,6 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 20:06)
+Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 23:14)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
@@ -13,7 +13,7 @@ Cache | - | - |  __Dostępny__
 Google analytics | ✔ | - |  __Dostępny__
 Bootstrap template | - | - |  Planowany
 Breadcrumb | ✔ | - | __Dostępny__
-Kostache | - | - |  Planowany
+Kostache | ✔ | - |  __Dostępny__
 Markitup editor | - | - |  Planowany
 Menu generator | - | - |  Planowany
 OAuth2 client | - | - |  __Dostępny__
