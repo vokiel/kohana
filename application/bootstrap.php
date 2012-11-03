@@ -95,7 +95,7 @@ Kohana::$log->attach(new Log\File(APPPATH.'logs'));
 Kohana::modules(array(
 	 'wysibb'      => MODPATH.'wysibb',      // Wysibb editor
 	 'theme'      => MODPATH.'theme',      // Theme and views system
-	 'swiftmailer'      => MODPATH.'swiftmailer',      // Swiftmailer
+	 'sender'      => MODPATH.'sender',      // Swiftmailer sender
 	 'sitemap'      => MODPATH.'sitemap',      // Sitemap
 	 'simpleauth'      => MODPATH.'simpleauth',      // Simpleauth
 	 'riudb'      => MODPATH.'riudb',      // RiuDB
