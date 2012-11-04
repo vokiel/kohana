@@ -101,7 +101,7 @@ if ( ! defined('KOHANA_START_MEMORY'))
 require APPPATH.'bootstrap'.EXT;
 
 
-echo Request::factory()
+echo Request::factory(TRUE,FALSE,TRUE)
 		->execute()
 		->send_headers(TRUE)
 		->body();

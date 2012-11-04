@@ -1,6 +1,6 @@
 #### Fork frameworka Kohana w wersji 3.3
 
-Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 23:14)
+Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 03:32)
 
 Nazwa modułu |	Dokumentacja |	Tutoriale |	Status
 --------------------- | ---------------------- | -------------- | ------------
@@ -11,7 +11,7 @@ Pagination | - | - |  __Dostępny__
 Feed | - | - |  __Dostępny__
 Cache | - | - |  __Dostępny__
 Google analytics | ✔ | - |  __Dostępny__
-Bootstrap template | - | - |  Planowany
+Bootstrap template | ✔ | - |  __Dostępny__
 Breadcrumb | ✔ | - | __Dostępny__
 Kostache | ✔ | - |  __Dostępny__
 Markitup editor | - | - |  Planowany
