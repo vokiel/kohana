@@ -1,6 +1,7 @@
 ## Uwaga
 
 Ten projekt jest rozwijany pod nazwą Hanariu
+
 Adres repozytorium: https://github.com/Hanariu
 
 
