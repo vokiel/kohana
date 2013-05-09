@@ -1,3 +1,9 @@
+## Uwaga
+
+Ten projekt jest rozwijany pod nazwą Hanariu
+Adres repozytorium: https://github.com/Hanariu
+
+
 #### Fork frameworka Kohana w wersji 3.3
 
 Aktualny postęp prac nad modułami (aktualizacja: 3 lis, 04:04)
