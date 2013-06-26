@@ -1,4 +1,4 @@
-<?php namespace Riu\Request\Client\Recursion;
+<?php namespace Kohana\Request\Client\Recursion;
 /**
  * @package    Kohana
  * @category   Exceptions
