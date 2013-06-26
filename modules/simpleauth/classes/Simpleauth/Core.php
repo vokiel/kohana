@@ -444,7 +444,7 @@ class Core
         $token_model->expires = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s') + $this->config['lifetime'], date('m'), date('d'), date('Y')));
         $token_model->save();
 
-        cookie::set($this->config['cookie_key'], $token_model->token, $this->config['lifetime']);
+        \Kohana\Cookie::set($this->config['cookie_key'], $token_model->token, $this->config['lifetime']);
       }
 
       $this->complete_login($user);
